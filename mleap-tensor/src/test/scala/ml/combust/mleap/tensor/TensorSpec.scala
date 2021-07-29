@@ -3,6 +3,37 @@ package ml.combust.mleap.tensor
 import org.scalatest.FunSpec
 
 class TensorSpec extends FunSpec {
+  describe("Prove DenseTensor has bug in get by indices") {
+    val shape = Seq(3, 4, 5)
+    val dims = shape.length
+    val size = shape.product
+    val array = Array.range(0, size)
+    val tensor = Tensor.create(values = array, dimensions = shape)
+
+    it("success if it follow fortran layout") {
+      val buf = scala.collection.mutable.ArrayBuffer.empty[Int]
+      print(s"size of tensor buffer is $size\n")
+      for(k <- 0 until 5)
+        for(j <- 0 until 4)
+          for(i <- 0 until 3) {
+            print(s"$i, $j, $k\n")
+            buf += tensor(i, j, k)
+          }
+      assert(buf.toArray sameElements array)
+    }
+
+    it("success if it follow C layout") {
+      print(s"size of tensor buffer is $size\n")
+      val buf = scala.collection.mutable.ArrayBuffer.empty[Int]
+      for(i <- 0 until 3)
+        for(j <- 0 until 4)
+          for(k <- 0 until 5) {
+            print(s"$i, $j, $k\n")
+            buf += tensor(i, j, k)
+          }
+      assert(buf.toArray sameElements array)
+    }
+  }
 
   describe("DenseTensor") {
     it("should return false for dense tensors with different base") {

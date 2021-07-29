@@ -82,7 +82,7 @@ case class DenseTensor[T](values: Array[T],
       i += 1
       n += tn
     }
-
+    print(s"buffer index: $n\n")
     if (values.size > n) {
       Some(values(n))
     } else { None }
