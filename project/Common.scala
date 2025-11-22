@@ -17,8 +17,9 @@ object Common {
   lazy val defaultSettings = buildSettings ++ sonatypeSettings
 
   lazy val buildSettings: Seq[Def.Setting[_]] = Seq(
-    scalaVersion := "2.12.18",
-    scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
+    scalaVersion := "2.13.16",
+    javacOptions ++= Seq("-source", "17", "-target", "17"),
+    scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-release", "17"),
     ThisBuild / libraryDependencySchemes +=
       "org.scala-lang.modules" %% "scala-collection-compat" % VersionScheme.Always,
     resolvers += Resolver.mavenLocal,
