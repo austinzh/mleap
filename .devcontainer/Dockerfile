@@ -1,7 +1,7 @@
 FROM --platform=linux/amd64 ubuntu:22.04
 
-ENV TZ=America/New_York
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN ln -fs /usr/share/zoneinfo/UTC /etc/localtime
+
 
 # Install necessary packages and tools
 RUN DEBIAN_FRONTEND=noninteractive  \
@@ -46,5 +46,4 @@ RUN curl -s "https://get.sdkman.io" | bash \
     && source "$HOME/.sdkman/bin/sdkman-init.sh" \
     && sdk install scala 2.13.16 \
     && sdk install sbt
-
-# Set up your environment as needed
+ENV PATH=/root/.sdkman/candidates/scala/current/bin:/root/.sdkman/candidates/sbt/current/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

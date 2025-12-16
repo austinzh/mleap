@@ -105,7 +105,7 @@ jobs:
       - name: Run Python 3.9 tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
-            --user root mleap:ci make test_python39
+            --user root mleap:ci make test_python_39
 
   python310-tests:
     name: Python 3.10 tests
@@ -130,7 +130,7 @@ jobs:
       - name: Run Python 3.10 tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
-            --user root mleap:ci make test_python310
+            --user root mleap:ci make test_python_310
 
   python311-tests:
     name: Python 3.11 tests
@@ -155,7 +155,7 @@ jobs:
       - name: Run Python 3.11 tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
-            --user root mleap:ci make test_python311
+            --user root mleap:ci make test_python_311
 
   python312-tests:
     name: Python 3.12 tests
@@ -180,7 +180,7 @@ jobs:
       - name: Run Python 3.12 tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
-            --user root mleap:ci make test_python312
+            --user root mleap:ci make test_python_312
 
   python313-tests:
     name: Python 3.13 tests
@@ -205,7 +205,7 @@ jobs:
       - name: Run Python 3.13 tests
         run: |
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace \
-            --user root mleap:ci make test_python313
+            --user root mleap:ci make test_python_313
 
   publish:
     name: Publish signed jars
