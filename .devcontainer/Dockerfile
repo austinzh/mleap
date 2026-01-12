@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive  \
     unzip \
     zip \
     git \
+    gpg \
     software-properties-common \
     python3-pip && \ 
     add-apt-repository ppa:deadsnakes/ppa && \
@@ -29,7 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive  \
     && rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-
+RUN pip install twine
 # ARG USERNAME=mleap
 # ARG USER_UID=1001
 # ARG USER_GID=$USER_UID
